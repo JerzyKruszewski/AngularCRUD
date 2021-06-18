@@ -1,0 +1,18 @@
+.danger {
+    background-color: #e81818;
+    margin: 2px;
+}
+
+.warning {
+    background-color: #f0f015;
+    margin: 2px;
+}
+
+.danger:hover {
+    background-color: #ff1010;
+}
+
+.warning:hover {
+    background-color: #ffff10;
+}
+
