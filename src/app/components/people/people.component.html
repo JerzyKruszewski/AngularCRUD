@@ -3,12 +3,37 @@
     <button class="btn btn-primary" (click)="onAddPersonClick()">Add</button>
     <table class="table">
         <thead>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Employment Date</th>
-            <th>Gender</th>
-            <th>City</th>
+            <!--🠕 🠗-->
+            <th>
+                <button class="btn btn-sm sort-control" (click)="onSort(0)">
+                    Id {{(sortBy == 0) ? ((sortDirection == 1) ? "🠕" : "🠗") : "‎ ‎"}}
+                </button>
+            </th>
+            <th>
+                <button class="btn btn-sm sort-control" (click)="onSort(1)">
+                    First Name {{(sortBy == 1) ? ((sortDirection == 1) ? "🠕" : "🠗") : "‎ ‎"}}
+                </button>
+            </th>
+            <th>
+                <button class="btn btn-sm sort-control" (click)="onSort(2)">
+                    Last Name {{(sortBy == 2) ? ((sortDirection == 1) ? "🠕" : "🠗") : "‎ ‎"}}
+                </button>
+            </th>
+            <th>
+                <button class="btn btn-sm sort-control" (click)="onSort(3)">
+                    Employment Date {{(sortBy == 3) ? ((sortDirection == 1) ? "🠕" : "🠗") : "‎ ‎"}}
+                </button>
+            </th>
+            <th>
+                <button class="btn btn-sm sort-control" (click)="onSort(4)">
+                    Gender {{(sortBy == 4) ? ((sortDirection == 1) ? "🠕" : "🠗") : "‎ ‎"}}
+                </button>
+            </th>
+            <th>
+                <button class="btn btn-sm sort-control" (click)="onSort(5)">
+                    City {{(sortBy == 5) ? ((sortDirection == 1) ? "🠕" : "🠗") : "‎ ‎"}}
+                </button>
+            </th>
         </thead>
         <tbody>
             <tr *ngFor="let person of people">

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { SortBy, SortDirection } from 'src/app/enums/enums';
 import { Person } from 'src/app/model/person.model';
 import { PeopleService } from 'src/app/services/people.service';
+import { SortService } from 'src/app/services/sort.service';
 
 @Component({
   selector: 'app-people',
@@ -13,11 +15,13 @@ export class PeopleComponent implements OnInit {
   public renderEditForm:boolean = false;
   public edittedPerson:Person | undefined;
   public people:Person[] | undefined;
+  public sortBy:SortBy = SortBy.Id;
+  public sortDirection:SortDirection = SortDirection.Desc;
 
   private readonly NotEnoughInformation:string = "Provided invalid information";
   private readonly InvalidDate:string = "Provided date was invalid";
 
-  constructor(private peopleService:PeopleService) { }
+  constructor(private peopleService:PeopleService, private sortService:SortService) { }
 
   ngOnInit(): void {
     this.people = this.peopleService.onGet();
@@ -96,6 +100,18 @@ export class PeopleComponent implements OnInit {
    */
   onDelete(id:number):void {
     this.people = this.peopleService.onDelete(id);
+  }
+
+  onSort(by:SortBy):void {
+    if (by === this.sortBy) {
+      this.sortDirection = (this.sortDirection === SortDirection.Desc) ? SortDirection.Asc : SortDirection.Desc;
+      this.sortService.sort(<Person[]>this.people, this.sortBy, this.sortDirection);
+      return;
+    }
+
+    this.sortBy = by;
+    this.sortDirection = SortDirection.Asc;
+    this.sortService.sort(<Person[]>this.people, this.sortBy, this.sortDirection);
   }
 
   /**

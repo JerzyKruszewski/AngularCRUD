@@ -5,9 +5,9 @@
 - Update
 - Read
 - Delete
+- Sorting
 
 ## Future plans
-- Sorting
 - Filtering
 - Pagination
 - Searching
